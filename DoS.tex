@@ -39,13 +39,82 @@
 \section{Maxwell-Gleichungen und Wellengleichung}
 \section{Physikalische Optik}
 \section{Geometrische Optik}
-Eikonal Theorie, Aberration
+\subsection{Eikonal Theorien lui}
+\subsection{Aberration jonas}
 \section{Paraxiale Optik}
+ABCD
 \section{Kenngrößen von optischen Systemen}
 effektive Brennweite, Blendenzahl, Seidelkoeffizienten, Modulationsübertragungsfunktion,...
 \chapter{Vorbereitende Aufgaben}
+Im folgenden werden die zwei vorbereitenden Aufgaben behandelt
 \section{Plankonvex- und Bikonvexlinse}
+Um die Krümmungsradien der dünnen Linsen zu berechnen benutzen wir die Linsenmachergleichung
+\begin{align}
+\frac{1}{f}=(n-1)\left(\frac{1}{R_1}-\frac{1}{R_2}\right)
+\end{align}
+Gegeben waren n=1,5168, $ f=10 $ cm sowie $ R_2=\inf $ bzw. $ R_2=-R_1 $. Damit ergibt sich für die Plankonvexe Linse
+\begin{align}
+R_1&=5,168\text{ cm}\\
+\text{bzw. }R_1&=10,336\text{ cm}
+\end{align}
+für die bikonvexe Linse.
 \section{Hubble-Teleskop}
+Zur Berechnung des Hubble-Teleskops bedienen wir uns der Matrizenoptik. Das Teleskop besteht aus zwei Propagationen und zwei Spiegeln
+\begin{align}
+T_1=\begin{pmatrix}
+1&L\\
+0&1
+\end{pmatrix},\,
+S_1=\begin{pmatrix}
+1&o\\
+-\frac{2}{R_1}&1
+\end{pmatrix},\,
+T_2=\begin{pmatrix}
+1&6,4\text{ m}\\
+0&1
+\end{pmatrix},\,
+S_2=\begin{pmatrix}
+1&0\\
+-\frac{2}{R_2}&1
+\end{pmatrix}
+\end{align} 
+Die in \cite{anl} angegebenen Bedingungen ergeben dann
+\begin{align}
+T_2S_2T_1S_1\begin{pmatrix}
+r_1\\
+0
+\end{pmatrix}
+&=\begin{pmatrix}
+0\\
+\theta_1
+\end{pmatrix}\\
+T_1S_1\begin{pmatrix}
+D_1/2\\
+\theta_{\text{max}}
+\end{pmatrix}
+&=\begin{pmatrix}
+D_2/2\\
+\theta_2
+\end{pmatrix}\\
+T_2S_2T_1S_1\begin{pmatrix}
+r_2\\
+\theta_{\text{min}}
+\end{pmatrix}
+&=\begin{pmatrix}
+r_{\text{min}}\\
+\theta_3
+\end{pmatrix}
+\end{align}
+wobei sich $ \theta_{\text{min}} $ durch das Rayleigh-Kriterium ergibt
+\begin{align}
+\theta_{\text{min}}=1,22\frac{\lambda}{D_1}=2,428\cdot 10^{-7}\text{ rad}
+\end{align}
+Durch lösen der Gleichungen erhält man
+\begin{align}
+R_1&=10,969\text{ m}\\
+R_2&=-1,346\text{ m}\\
+L&=4,876\text{ m}
+\end{align}
 \chapter{Versuchsdurchführung und Auswertung}
 \section{Sammellinse}
 \subsection{Paraxiale Linse}
@@ -61,7 +130,8 @@ effektive Brennweite, Blendenzahl, Seidelkoeffizienten, Modulationsübertragungs
 •
 \renewcommand{\bibname}{Literatur}
 \begin{thebibliography}{0}
-\bibitem {refname} •
+\bibitem {anl} Versuchsanleitung: Design optischer Systeme, Version vom 25. August 2015
+\bibitem {skript} Vorlesungsskript Optik, WiSe 2016/17, Prof. T. Walther
 
 \end{thebibliography}
 \end{document}    
