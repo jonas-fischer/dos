@@ -7,6 +7,8 @@
 \usepackage{mathtools}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{gensymb}
+\usepackage{subfig}
 
 \title{VERSUCH 4.12A: Design optischer Systeme}
 
@@ -37,14 +39,96 @@
 •
 \chapter{Physikalische Grundlagen}
 \section{Maxwell-Gleichungen und Wellengleichung}
-\section{Physikalische Optik}
+Licht lässt sich als Welle durch die Maxwell-Gleichungen beschreiben. Wir betrachten Medien mit verschwindender Ladungs- und Stromdichte. Hierfür lauten die Maxwell-Gleichungen
+\begin{align}
+\epsilon_0\nabla[\epsilon(\vec{x})\vec{E}(\vec{x},t)]&=0\\
+\mu_0\nabla[\mu(\vec{x})\vec{H}(\vec{x},t)]&=0\\
+\nabla\times\vec{E}(\vec{x},t)&=-\mu_0\mu(\vec{x})\frac{\partial\vec{H}(\vec{x},t)}{\partial t}\\
+\nabla\times\vec{H}(\vec{x},t)&=\epsilon_0\epsilon(\vec{x})\frac{\partial\vec{E}(\vec{x},t)}{\partial t}
+\end{align}
+Daraus ergibt sich die Wellengleichung
+\begin{align}
+\nabla^2\vec{E}=\frac{1}{c^2}\frac{\partial^2\vec{E}}{\partial t^2} 
+\end{align}
+und ebenso für $ \vec{H} $. Es gilt $ c=1/\sqrt{\epsilon_0\epsilon\mu_0\mu} $. Der Ansatz der ebenen Welle löst diese Gleichung.
+\begin{align}
+\vec{A}=\vec{A}_0e^{i(\vec{k\vec{x}}-\omega t)}
+\end{align}
+Dabei gilt, dass die Maße des Systems groß sind gegenüber der Wellenlänge $ \lambda $, und, dass $ \omega=kc $ gilt.
+\section{Physikalische Optik lui}
 \section{Geometrische Optik}
 \subsection{Eikonal Theorien lui}
-\subsection{Aberration jonas}
-\section{Paraxiale Optik}
+\subsection{Aberration}
+Durch die Paraxiale Näherung kommt es zu Differenzen der geometrischen Optik und der physikalischen Optik. Diese Abweichungen nennt man Aberrationen.\\
+Die \textbf{sphärische Aberration} kommt dadurch zustande, dass achsferne Strahlen zu einem anderen Brennpunkt hin gebrochen werden als achsnahe. Dies führt zu einem unscharfen Bild.\\
+Beim \textbf{Astigmatismus} liegt der Focus der Meridonalebene, jene Ebene, die das Objekt und die optische Achse enthält, weiter vorne als die der Sagittalebene, die Senkrecht zur Meridonalebene liegt. Dies führt dazu, dass es erst einen waagrechter Strichfokus, dann ein Kreis der kleinsten Verwirrung und schließlich ein senkrechter Strichfokus entsteht.\\
+Die \textbf{Koma} entsteht durch die Überlagerung von sphärischer Aberration und Astigmatismus. Dabei entsteht ein zum Rand der Apparatur gerichteter Schweif.\\
+Die \textbf{Bildfeldwölbung} beschreibt, dass es sich bei der Bildebene nicht um eine Eben handelt sondern um eine gekrümmte Fläche. Dadurch kommt es zu einer Abblidung mit unscharfem Rand.\\
+Die \textbf{Verzeichung} produziert als einziger Linsenfehler keine Unschärfe, sonder eine Verzerrung des Bildes, da achsnahe und achsferne Strahlen unterschiedlich vergrößert werden.\\
+Diese sind monochromatische Fehler, als chromatische Fehler bezeichnet man, dass unterschiedliche Wellenlängen unterschiedliche Fokusse haben.\\
+Mit Hilfe des Wellenfrontfehlers lassen sich die monochromatischen Aberrationen quantifizieren. Dazu betrachtet man eine ideale, an der Austrittspupille des Systems konvergierende Kugelwelle als Referenzwelle. Die Abweichung zur vom optischen System ausgehenden Wellenfront ist der Wellenfrontfehler. Ein Strahl ist durch seinen Startpunkt in der Objektebene $r_0 = (x_0, y_0)$ und seinen Schnittpunkt mit der Austrittspupille $r_p = (x_p, y_p)$ komplett beschrieben. Im Falle rotationssymmetrischer Systeme lässt sich der Strahl auch beschreiben durch
+\begin{align}
+\eta&=\frac{|r_0|}{h_{max}}\\
+\rho&=\frac{|r_p|}{r_{max}}\\
+\theta&=\angle(r_0,r,p)
+\end{align}
+wobei $ h_{max} $ die maximale Höhe des Objektes
+und $ r_{max} $ den Radius der Austrittspupille bezeichnen. Die Wellenfrontfehlerfunktion $W$ ist
+\begin{align}
+W(\eta,\rho,\theta)=\sum_{ijk}^{\inf}W_{ijk}\eta^i\rho^j\cos^k\theta
+\end{align}
+Es gilt $i+j$ und $j+k$ sind für jeden Summanden eine positive gerade Zahl, sowie $k\leq j$. Der Zusammenhang von $ W_{ijk} $ und den Seidelkoeffizienten ist wie folgt
+\begin{align}
+S_1&=8W_{040}\\
+S_2&=2W_{131}\\
+S_3&=2W_{222}\\
+S_4&=4W_{220}-S_3\\
+S_5&=2W_{311}
+\end{align}
+Und die Koeffizienten $ W_{ijk} $ haben folgende Bedeutung (Tabelle \ref{tab:W}):
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline 
+Koeffizient & Name & Bedeutung \\ 
+\hline 
+$W_{000}$ & Hub & Konstante additive Phase, hat keinen messbaren Einfluss \\ 
+$W_{111}$ & Verkippung & Verkippung der Bildebene, keine Auswirkung auf Bildqualität \\ 
+$W_{020}$ & Fokus & Verschiebung der Bildebene, kann trivial ausgeglichen werden \\ 
+\hline 
+$W_{040}$ & Sphärische Aberration & Änderung des Fokus mit Pupillenkoordinate $\rho$ \\  
+$W_{131}$ & Koma & Änderung der Verkippung mit Pupillenkoordinate $\rho$ \\
+$W_{220}$ & Bildfeldwölbung & Änderung des Fokus mit Objektkoordinate $\eta$ \\
+$W_{311}$ & Verzeichnung & Änderung der Verkippung mit Objektkoordinate $\eta$ \\ 
+$W_{222}$ & Astigmatismus & Änderung der Bildfeldwölbung mit Pupillenorientierung $\theta$ \\ 
+\hline 
+\end{tabular} 
+\caption{Aberrationen eines rotationssymmetrischen optischen Systems in niedrigsten Ordnungen von $\eta$ und $\rho$. \cite{anl}} \label{tab:W}
+\end{table}
+\section{Paraxiale Optik lui}
 ABCD
 \section{Kenngrößen von optischen Systemen}
-effektive Brennweite, Blendenzahl, Seidelkoeffizienten, Modulationsübertragungsfunktion,...
+Zur Beschreibung Optischer Systeme wollen wir nun auf einige wichtige Größen eingehen. \\
+Für die Charakterisierung von Oberflächen parametrisiert man diese in geeigneter Weise. Die konische Konstante $ \kappa $ bestimmt maßgeblich die Form (siehe Tabelle \ref{tab:kappa}).
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline 
+Wertebereich von $ \kappa $ & Rotationskörper \\ 
+\hline 
+$ \kappa <-1 $ & Hyperboloid \\  
+$ \kappa =-1 $ & Paraboloid \\ 
+$-1< \kappa <0 $ & Ellipsoid (prolate Deformierung) \\ 
+$ \kappa =0 $ & Kugel \\ 
+$ \kappa >0 $ & Ellipsoid (oblate Deformierung) \\ 
+\hline 
+\end{tabular} 
+\caption{Bedeutung der konischen Konstanten \cite{anl}}\label{tab:kappa}
+\end{table}
+Die \textbf{effektive Brennweite (EFL)} ist die resultierende Brennweite eines Systems. \\
+Der \textbf{Durchmesser der Eintrittsblende (EPD)} ist der von der Objektseite gesehene Durchmesser der Aperturblende. \\
+Die \textbf{Blendenzahl} ist $ \frac{\text{EFL}}{\text{EPD}} $ und beschreibt die Intensität des Bildes. Verwendet wird sie vor allem bei weit vom System entfernten Objekten. \\
+Für nahe Objekte nimmt man die \textbf{numerische Apertur} die sich aus dem Brechungsindex und dem halben Öffnungswinkel berechnet. NA$ =n\cdot\sin\alpha $.\\
 \chapter{Vorbereitende Aufgaben}
 Im folgenden werden die zwei vorbereitenden Aufgaben behandelt
 \section{Plankonvex- und Bikonvexlinse}
@@ -122,16 +206,137 @@ L&=4,876\text{ m}
 \subsection{Optimierung der Linse}
 \subsection{Linsen-Doublett}
 \section{Hubble-Teleskop}
+Nun untersuchen wir das Hubble-Teleskop. Dazu erstellen wir zunächst eine paraxiale Version des Teleskops.
 \subsection{Paraxiales Teleskop}
+In Abbildung \ref{fig:hubideal} sind Spotdiagramm (\ref{fig:hubspotideal}) und Querschnitt (\ref{fig:hubcrossideal}) der paraxialen Version des Teleskops dargestellt. Die Seidelkoeffizienten sind hier natürlich alle gleich null, da es sich um die genäherte Version handelt.
+\begin{figure}[H]
+\centering
+  \subfloat[Querschnitt für die Winkel 0,00\degree , 0,06\degree\;und 0,08\degree ]{\label{fig:hubcrossideal}
+   	\includegraphics[width=0.5\textwidth]{BilderH/ideal_cross.jpg}}\quad
+  \subfloat[Spotdiagramm des paraxialen Hubble-Teleskops]{\label{fig:hubspotideal}
+   	\includegraphics[width=0.4\textwidth]{BilderH/ideal_spot.jpg}}\quad   
+  \caption{Paraxiale Version des Hubble-Teleskops}
+  \label{fig:hubideal}
+\end{figure}
 \subsection{Reales Teleskop}
+Um zum realen System überzugehen ändern wir die idealen Spiegel zu gekrümmten Flächen mit den berechneten Radien. In Abbildung \ref{fig:hubstd} sind die Seidelkoeffizienten (\ref{fig:hubseidelstd}) und die Spotdiagramme (\ref{fig:hubspotstd}) dargestellt. Hier erkennt man, dass der einzige Abbildungsfehler die sphärische Aberration ist. Warum das Spotdiagramm so weit streut lässt sich in Abbildung \ref{fig:hubcrossstd} erkennen. Der Fokus liegt deutlich vor dem Schirm.
+\begin{figure}[H]
+\centering
+  \subfloat[Seidelkoeffizienten für das Teleskop mit den berechneten Radien und Längen]{\label{fig:hubseidelstd}
+   	\includegraphics[width=0.45\textwidth]{BilderH/standard_seidel.jpg}}\quad
+  \subfloat[Spotdiagramm des realen, nicht optimierten Hubble-Teleskops. Man erkennt, dass der Fokus deutlich vor dem Schirm liegt]{\label{fig:hubspotstd}
+   	\includegraphics[width=0.45\textwidth]{BilderH/standard_spot.jpg}}\quad   
+  \caption{Reale, nicht optimierte Version des Hubble-Teleskops}
+  \label{fig:hubstd}
+  
+\end{figure}
+\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+   	\includegraphics[width=\textwidth]{BilderH/standard_cross_0grad.jpg}
+   	\caption{Querschnitt des realen, nicht optimierten Hubble-Teleskops}
+  	\label{fig:hubcrossstd}
+   	\end{minipage}
+\end{figure}
 \subsection{Optimierung des Teleskops}
+Nun wollen wir das System optimieren. Dazu wählen wir als Parameter den Krümmungsradius des zweiten Spiegels, sowie die Koniken $ \kappa $ beider Spiegel. Außerdem lassen wir eine Krümmung des Schirms zu. Als die zu optimierende Größe wählen wir den Wellenfrontfehler. \\
+In Abbildung \ref{fig:hubseidelopti} erkennt man anhand der Seidelkoeffizienten dass sich die Aberrationen der Spiegel gerade gegenseitig aufheben. Die resultierende \glqq Field Curvature\grqq\, wird durch den gekrümmten Schirm kompensiert (siehe Abb. \ref{fig:hubcrossopti}). Die Spotdiagramme (\ref{fig:hubspotopti}) zeigen, dass wir uns nun am Beugungslimits befinden, da alle Strahlen innerhalb des Airy-Radius befinden und wir damit beugungsbegrenzt sind.
+\begin{figure}[H]
+\centering
+  \subfloat[Seidelkoeffizienten für das optimierte Teleskop]{\label{fig:hubseidelopti}
+   	\includegraphics[width=0.45\textwidth]{BilderH/opti_seidel.jpg}}\quad
+  \subfloat[Spotdiagramm des optimierten Hubble-Teleskops]{\label{fig:hubspotopti}
+   	\includegraphics[width=0.45\textwidth]{BilderH/opti_spot.jpg}}\quad   
+  \caption{Optimierte Version des Hubble-Teleskops}
+  \label{fig:hubopti}
+  
+\end{figure}
+\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+   	\includegraphics[width=\textwidth]{BilderH/opti_cross.jpg}
+   	\caption{Querschnitt des optimierten Hubble-Teleskops}
+  	\label{fig:hubcrossopti}
+   	\end{minipage}
+\end{figure}
+Vergleicht man das nicht optimierte mit dem optimierten System so ergeben sich durch die Änderungen (siehe Tabelle \ref{tab:hubopti}) ergeben sich folgende Verbesserungen der RMS-Radien:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+ & $r_{\text{Airy}}$ & $r_{\text{RMS}}(0\degree)$ & $r_{\text{RMS}}(0,06\degree)$ & $r_{\text{RMS}}(0,08\degree)$ \\ 
+\hline 
+nicht optimiertes System & 9,69 $\mu$m & 4,2 cm & 3,6 cm & 3,6 cm \\ 
+\hline 
+optimiertes System & 14,04 $\mu$m & 0,02 $\mu$m & 4,125 $\mu$m & 7,291 $\mu$m \\ 
+\hline 
+\end{tabular} 
+\caption{RMS-Radien vor und nach der Optimierung}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline 
+Optimierungsparameter & Startwert & optimierter Wert \\ 
+\hline 
+Radius Spiegel 2 & -1,35328 & -1,35330 \\ 
+\hline 
+Konik Spiegel 1 & 0 & -1 \\ 
+\hline 
+Konik Spiegel 2 & 0 & -1,472 \\ 
+\hline 
+Radius Bildebene & $\infty$ & -0,63 \\ 
+\hline 
+Konik Bildebene & $-\infty$ & -0,052 \\ 
+\hline 
+\end{tabular} 
+\caption{Optimierte Parameter des Hubble-Teleskops}\label{tab:hubopti}
+\end{table}
+Um die Leistung des simulierten Teleskops charakterisieren zu können betrachten wir die Modulationsübertragungsfunktion (MTF) des Systems. Diese stellt den Kontrast des Objekts in Relation mit dem Kontrast des Bildes. Sie ist in Abbildung \ref{fig:hubmtfopti} dargestellt.
+
+\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+   	\includegraphics[width=\textwidth]{BilderH/opti_mtf.jpg}
+   	\caption{MTF des simulierten Systems}
+  	\label{fig:hubmtfopti}
+   	\end{minipage}
+\end{figure}
+
+Als Beispiel dazu berechnen wir den Kontrast zweier Sterne die sich im Abstand von $2,5\cdot 10^6$ Lichtjahren von der Erde und $4,34$ Lichtjahren voneinander entfernt befinden. Damit ergibt sich eine Ortsfrequenz von
+\begin{align}
+\xi=\frac{R}{X}=\frac{2,5\cdot 10^6}{4,34}=576036,87\frac{1}{\text{rad}}=576,04\frac{1}{\text{mrad}}
+\end{align}
+In Abbildung \ref{fig:hubmtfopti} kann man nun ablesen, dass der Kontrastwert hierfür etwa 0,9 ist. Damit sollten die Sterne noch zu unterscheiden sein. \\
+Im Vergleich dazu ist der minimal auflösbare Winkel nach dem Rayleigh-Kriterium
+\begin{align}
+\theta_{\text{min}}=1,22\frac{\lambda}{d}=1,22\frac{477,5\text{ nm}}{2,4\text{ m}}=0,243\cdot 10^{-6}\text{ rad}
+\end{align}
+Wohingegen der Winkel zwischen den Sternen 
+\begin{align}
+\theta\approx\frac{X}{R}=\frac{4,34}{2,5\cdot 10^6}=1,736\cdot 10^{-6}\text{ rad}
+\end{align}
+ist. Also sind die Sterne auch nach dem Rayleigh-Kriterium unterscheidbar.
 \subsection{Entwicklerversion}
+Jetzt betrachten wir noch den Fehler der beim Bau des Teleskops der zu einer falschen Konik des primären Spiegels führte. In Abbildung \ref{fig:hubent} sind die Simulation eines Bildes (\ref{fig:hubentfalsch}), sowie das verwendete Original (\ref{fig:hubentorig}) abgebildet. Es ist unschwer zu erkennen, dass die Qualität erheblich leidet.
+\begin{figure}[H]
+\centering
+  \subfloat[Original]{\label{fig:hubentorig}
+   	\includegraphics[width=0.45\textwidth]{BilderH/opti_bild.jpg}}\quad
+  \subfloat[Bild des fehlerhaften Hubble-Teleskops]{\label{fig:hubentfalsch}
+   	\includegraphics[width=0.45\textwidth]{BilderH/bild_falsches_hubble.jpg}}\quad   
+  \caption{Simulation des fehlerhaften Hubble-Teleskops}
+  \label{fig:hubent}
+\end{figure}
 \chapter{Fazit}	
 •
 \renewcommand{\bibname}{Literatur}
 \begin{thebibliography}{0}
 \bibitem {anl} Versuchsanleitung: Design optischer Systeme, Version vom 25. August 2015
 \bibitem {skript} Vorlesungsskript Optik, WiSe 2016/17, Prof. T. Walther
+\bibitem {freq} \url{https://spie.org/publications/tt52_12_spatial_frequency}
 
 \end{thebibliography}
 \end{document}    
