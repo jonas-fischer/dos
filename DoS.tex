@@ -200,11 +200,145 @@ R_2&=-1,346\text{ m}\\
 L&=4,876\text{ m}
 \end{align}
 \chapter{Versuchsdurchführung und Auswertung}
-\section{Sammellinse}
-\subsection{Paraxiale Linse}
-\subsection{Reale Linse}
-\subsection{Optimierung der Linse}
-\subsection{Linsen-Doublett}
+	\section{Sammellinse}
+		\subsection{Paraxiale Linse}
+		
+		Zunächst simulierten wir mit Zemax die Abbildung einer paraxialen Sammellinse. Wie gefordert wurde die Wellenlänge auf $\lambda_d = 587,65 nm$, die Brennweite auf $f = 10 /, /si{cm}$ und die Eintrittspupille auf $d_E = 20 mm$ gesetzt. Die Strahlen wurden für Eintrittswinkel von $0°$ und $10°$ simuliert. An den Strahlengängen, ist keine Aberration zu erkennen. Dies entspricht der Erwartung, da die Linse der paraxialen Näherung entsprechend simuliert wurde. In ABB ist das ganze dann quantifiziert. Wir erkennen einen RMS-Spotradius von $0 \, \mu m$. Also ist dieses System beugungsbegrenzt durch das eingezeichnete Airyscheibchen. Dem ganzen entsprechend sind die in ABB zu sehenden Seidelkoeffizienten, die den Einfluss der verschiedenen Aberration beschreiben alle Null. 
+		
+	\begin{figure}[H]
+\centering
+  \subfloat[Querschnitt für die Winkel 0,00\degree , 0,06\degree\;und 0,08\degree ]{
+   	\includegraphics[width=0.5\textwidth]{BilderH/ideal_cross_L.jpg}}\quad
+  \subfloat[Spotdiagramm der paraxialen Linse]{
+   	\includegraphics[width=0.4\textwidth]{BilderH/ideal_spot_L.jpg}}\quad   
+  \caption{Paraxiale Version der Linse}
+\end{figure}		
+		
+\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+ \centering  	\includegraphics[width=.5\textwidth]{BilderH/ideal_seidel_L.jpg}
+   	\caption{Seidelkoeffizienten der paraxialen Linse}
+  	\end{minipage}
+\end{figure}		
+		
+		In der Realität finden nützt uns die Simulation einer perfekt paraxial genäherten Linse aber nichts. Deshalb simmulierten wir anschließend ein reales System:
+		
+		\subsection{Reale Linse}
+		
+		Es sollen nun eine reale, also ausgedehnte Linsen betrachtet werden. Deshalb muss in Zemax eine weitere Oberfläche eingefügt werden. 
+		
+		Zunächst soll eine plankonvexe Linse mit $R_1 = 5,168 m$ und $R_2 = \infty$ simuliert werden. ls Glastyp wurde N-BK7 ausgewählt. Wieder wurde für die Eintreffwinkel $0°$ und $10°$ simuliert. Der Strahlgang ist in ABB dargestellt.
+		
+		
+		\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+\centering   	\includegraphics[width=.5\textwidth]{BilderH/standard_cross_L.jpg}
+   	\caption{Querschnitt der Plankonvexlinse}
+  	\end{minipage}
+\end{figure}
+				
+		
+		Wir erkennen eine Defokussierung, die beim schräg eintreffenden Strahl stärker ist als beim achsparallelen.
+	Nun liefert das Spotdiagramm interessante Informationen zum Fehler der Abbildung. Im Spotdiagramm sehen wir deutlich, dass die RMS Radien mit $r_{RMS \, 0°} = 143,66 \mu m $ und $r_{RMS \, 10°} = 484,13 $ den Airyradius $r_{Airy} = 3,54 \mu m$ deutlich übersteigen. Das System ist also nicht durch Beugung sondern durch die Abbildungsfehler begrenzt.
+	
+		\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+\centering   	\includegraphics[width=.5\textwidth]{BilderH/standard_spot_L.jpg}
+   	\caption{Spotdiagramm der Plankonvexlinse}
+  	\end{minipage}
+\end{figure}
+		
+	An den Seidelkoeffizienten erkennen wir, dass alle Abbildungsfehler auftreten, die Verzeichnung am stärksten. Sphärische Aberration ist auch zu beobachten. Entgegen des aufgrund der elliptischen Form des Spotdiagramms für den Strahl unter $10°$ vermutet großen Anteils des Astigmatismusses dominiert diese Aberration nicht. Offensichtlich ist wohl ein Fehler bei der computergestützten Bestimmung der Seidelkoeffizienten passiert.
+	
+\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+\centering   	\includegraphics[width=.5\textwidth]{BilderH/standard_seidel_L.jpg}
+   	\caption{Seidelkoeffizienten der Plankonvexlinse}
+  	\end{minipage}
+\end{figure}
+	
+	Nun wurde das zweite System aus der Vorbereitungsaufgabe, die bikonkave Linse mit $|R_{1/2}| = 10,336 cm$ unter den gleichen Voraussetzungen, das heißt mit gleichem Glas und gleichen Einfallswinkeln. Den Strahlgang sieht man in folgender Abbildung 
+	
+	\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+\centering   	\includegraphics[width=.5\textwidth]{BilderH/standard_cross2_L.jpg}
+   	\caption{Querschnitt der Bikonvexlinse}
+  	\end{minipage}
+\end{figure}
+	
+	Auch hier erkennt man am Strahlgang eine Defokussierung. Zur vorig simulierten Linse ist aber am Strahlgang keine Veränderung zu beobachten. Zur Beurteilung werden wieder Spotdiagramm und Seidelkoeffizienten herangezogen.
+	
+	\begin{figure}[H]
+\centering
+  \subfloat[Spotdiagramm der Bikonvexlinse]{
+   	\includegraphics[width=0.5\textwidth]{BilderH/standard_spot2_L.jpg}}\quad
+  \subfloat[Seidelkoeffizienten der Bikonvexlinse]{
+   	\includegraphics[width=0.4\textwidth]{BilderH/standard_seidel2_L.jpg}}\quad   
+  \caption{Bikonvexlinse}
+\end{figure}
+	
+	Das Spotdiagramm liefert uns direkt die Information, dass der Airyradius relativ konstant geblieben ist, während sich die RMS Radien verändert haben. Für 0° ist der RMS Radius mit jetzt $r_{RMS \, 0°} = 119,40 \mu m $ deutlich kleiner, während der für den 10° Strahl mit $r_{RMS \, 10°} = 492,27 $ geringfügig gestiegen ist. Außerdem ist die Verteilung im Spotdiagramm für den schrägen Strahl nun nicht mehr elliptisch sondern eher kometenförmig. Dies spricht für einen höheren Anteil der Koma. Die Betrachtung der Seidelkoeffizienten liefert dafür keine Bestätigung. Der Vergleich mit anderen Versuchsdurchführungen zeigt, dass wir die vordere Seite der Linse als Oberfläche der Strahlquelle gesetzt haben und wohl deshalb keine sinnvollen Ergebnisse für die Seidelkoeffizienten erhalten. Strahlgang und Spotdiagramm sind hiervon unberührt und exakt. 
+	Zu den Abbildungsfehlern können wir hier deshalb nur einen hohen Anteil der Koma vermuten.
+	
+	\subsection{Optimierte Linse}
+	
+	Nun sollte im als nächstes die Optimierungsfunktion von Zemax benutzt werden, um eines der beiden vorigen Systeme zu optimieren. Wir entschieden uns für die bikonvexe Linse. Als für die Optimierung variable Größen setzten, wir die Krümmungsradien der Linsenoberflächen, den Abstand der hinteren Linsenoberfläche zur Bildebene sowie die Dicke der Linse, wobei diese auf maximal $d_{max} = 30 mm$ gesetzt wurde. Konstant gehalten werden sollte die Blendenzahl $F =5$, was vor allem die Krümmungsradien beeinflusst. Die Zemaxoptimierung wurde nun als Minimierungsproblem des RMS Spotradiuses vom Computer durchgeführt. Für den Strahlgang erhielten wir folgendes Ergebnis: 
+	
+	\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+   	\centering
+   	\includegraphics[width=.5\textwidth]{BilderH/opti_cross_L.jpg}
+   	\caption{Querschnitt der optimierten Bikonvexlinse}
+  	\end{minipage}
+\end{figure}
+	
+	Von Interesse ist hier nun wieder das Spotdiagramm. Mit $r_{RMS \, 0°} = 81,97 \mu m $ und $r_{RMS \, 10°} = 193,52 \mu m $ ist vor insbesondere für den schrägen Strahlgang eine deutliche Verbesserung zu beobachten. Interessanterweise sind hier die ausgegebenen Seidelkoeffizienten wieder sinnvoll und passen zu den Ergebnissen der anderen Gruppe, die den Versuch durchgeführt hat. Wir erkennen, das nun der Hauptteil des Abbildungsfehlers die sphärische Aberration ausmacht. 
+	
+	\begin{figure}[H]
+\centering
+  \subfloat[Spotdiagramm der optmierten Bikonvexlinse]{
+   	\includegraphics[width=0.5\textwidth]{BilderH/opti_spot_L.jpg}}\quad
+  \subfloat[Seidelkoeffizienten der optimierten Bikonvexlinse]{
+   	\includegraphics[width=0.4\textwidth]{BilderH/opti_seidel_L.jpg}}\quad   
+  \caption{Optimierte Bikonvexlinse}
+\end{figure}
+	
+	\subsection{Doublett mit Optimierung}
+	
+	Die Optimierungsmöglichkeiten für Zemax, aber auch in realen optischen Aufbauten erhöht sich mit der Anzahl der Freiheitsgrade. Aus diesem Grund sollte nun ein Mehrlinsensystem simuliert und optimiert werden. Wir entschieden uns für ein Doublett. Also fügten wir in Zemax zwei weitere Oberflächen in das zuvor verwendete System ein und optimierten das System. Variable Komponenten waren wieder die Krümmungsradien und die Abstände zwischen Linsen und Bildebene, die Linsendicke sowie dieses mal der Glastyp der ersten Linse, wobei der sich, so viel sei hier vorweggegriffen bei der Optimierung nicht änderte. Weiterhin wurde die konische Konstante der Linsenoberflächen variabel gesetzt, sodass es sich dabei nicht mehr zwingend um Kugelschnitte handeln muss. Nach der Optimierung erhält man folgendes System:
+	
+\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+   	\centering
+   	\includegraphics[width=.5\textwidth]{BilderH/duplett_cross_opti.jpg}
+   	\caption{Querschnitt des Doublett-Systems}
+  	\end{minipage}
+\end{figure}
+	
+	Dieses Mal wurde auch chromatische Abberation mitbetrachtet, indem wir drei verschiedenen Wellenlängen simulierten, nämlich $\lambda_1 = 587,562 nm$, $\lambda_2 = 656,273 nm$ und $\lambda_3 = 587,562 nm$
+	Hier ist wieder die Betrachtung von Spotdiagramm und Seidelkoeffizienten interessant:
+	
+	\begin{figure}[H]
+\centering
+  \subfloat[Spotdiagramm der optmierten Bikonvexlinse]{
+   	\includegraphics[width=0.5\textwidth]{BilderH/duplett_spot_opti.jpg}}\quad
+  \subfloat[Seidelkoeffizienten des optimierten Doublett]{
+   	\includegraphics[width=0.4\textwidth]{BilderH/duplett_seidel_opti.jpg}}\quad   
+  \caption{Optimiertes Doublett}
+\end{figure}
+	
+	Im Spotdiagramm erkennen wir, dass Licht höherer Wellenlänge besser fokussiert wird. Für schräg einfallendes Licht beobachten wir eine Anordnung der Punkte in Form einer verzerrten Ellipse.
+	  Mit $r_{RMS \, 0°} = 78,58 \mu m $ und $r_{RMS \, 10°} = 129,65 \mu m $ für die auch zuvor verwendete Wellenlänge erkennen wir, dass das optimierte Zweilinsensystem nochmal besser abbildet, da zur Optimierung mehr Freiheitsgrade zur Verfügung stehen. 
+	 Dies Seidelkoeffizienten zeigen deutlich, dass der dominierende Fehler die sphärische Aberration ist. 
+	 
+	 Letztlich haben wir ein relativ gut abbildendes Zweilinsensystem mit Zemax simuliert und optimiert, woran der praktische Nutzen des Programms und des Designs optischer Systeme gut verständlich wurde.
 \section{Hubble-Teleskop}
 Nun untersuchen wir das Hubble-Teleskop. Dazu erstellen wir zunächst eine paraxiale Version des Teleskops.
 \subsection{Paraxiales Teleskop}
