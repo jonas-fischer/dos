@@ -36,7 +36,7 @@
 \tableofcontents
 
 \chapter{Ziel des Versuchs}
-•
+In diesem Versuch sollen am Computer optische System entworfen, designt, simuliert und optimiert werden. Dafür wird das Programm Zemax verwendet, welches in der Industrie weit verbreitet ist. Es soll zunächst der Strahlgang durch verschiedene Linsensysteme simuliert werden und dabei insbesondere die Abbildungsfehler untersucht werden. Anschließend sollen die Systeme nach möglichst kleinen Abbildungsfehlern optimiert werden. Anschließend findet eine ähnlich Untersuchung des Hubble Weltraumteleskopes mit Zemax statt.
 \chapter{Physikalische Grundlagen}
 \section{Maxwell-Gleichungen und Wellengleichung}
 Licht lässt sich als Welle durch die Maxwell-Gleichungen beschreiben. Wir betrachten Medien mit verschwindender Ladungs- und Stromdichte. Hierfür lauten die Maxwell-Gleichungen
@@ -55,9 +55,39 @@ und ebenso für $ \vec{H} $. Es gilt $ c=1/\sqrt{\epsilon_0\epsilon\mu_0\mu} $. 
 \vec{A}=\vec{A}_0e^{i(\vec{k\vec{x}}-\omega t)}
 \end{align}
 Dabei gilt, dass die Maße des Systems groß sind gegenüber der Wellenlänge $ \lambda $, und, dass $ \omega=kc $ gilt.
-\section{Physikalische Optik lui}
+\subsection{Physikalische Optik}
+		\subsubsection{Beugung}
+			Licht wird in der Realität nur als Bündel ausgsandt. Trifft ein Lichtbündelauf eine scharf begrenzte Fläche, zum Beispiel eine Blende oder auch ein Gitter, so beobachtet man auch Intensität in Bereichen, die nach Überlegungen der geometrischen Optik ausgeschlossen sind. Dieses Phänomen heißt Beugung. Sie lässt sich mit dem Huygensschen Prinzip gut erklären. Jeder Punkt einer Wellenfront ist, nach diesem, Ausgangspunkt einer neuen Elementarwelle. An scharf begrenzten Kanten sorgt dies dafür, dass die Wellenfront an der Kante nicht mehr nur eben in die Ausgangsrichtung verläuft. Manche dieser Elementarwellen gelangen in den Schatten hinter der Kante, sodass dort Intensität nachgewiesen werden kann.
+			\subsubsection{Interferenz}
+			Im allgemeinen beeinflussen sich elektromagnetische wie alle anderen Wellen auch sich nicht gegenseitig in Ausbreitungsrichtung und -geschwindigkeit. Nach dem Superpositionsprinzip addieren sich lediglich die Amplituden. Ein typisches Beispiel für Interferenz ist der Doppelspaltversuch. Auf dem Schirm hinter einem mit monochromatischem und kohärenten beleuchteten Doppelspalt finden sich dunkle und hellen Streifen, je nach Phasenunterschied zwischen beiden möglichen Wegen. Ist die Wegdiffernez ein Vielfaches der Wellenlänge so herrscht am Schirm konstruktive Interferenz und wir messen eine höhere Intensität als von einem der Spalte ausgeht. Dazwischen in den dunklen Sreifen löschen sich gerade die Amplituden der beiden von den Spalten ausgehenden Wellen aus.
 \section{Geometrische Optik}
-\subsection{Eikonal Theorien lui}
+\subsection{Eikonal Theorie}
+		Das Eikonal $S \left( \vec{x} \right)$ aus der Amplitudenfunktion für Wellen 
+		\[
+		\Phi \left( \vec{x} , t \right) = \Phi_0 \cdot e^{ik\left(S \left( \vec{x} \right)-ct\right)}
+		\]
+		stellt eine räumlich Funktion für die Phase dar. So ist $S\left( \vec{x} \right)$ innerhalb einer Wellenfront konstant. Wir finden mit den Maxwellgleichungen und dem Kurzwellenlimes die Eikonalgleichung:
+		\[
+		\lbrack \vec{\nabla} S\left( \vec{x} \right) \rbrack ^2 = n\left(\vec{x} \right)^2
+		\]
+		Die Eikonalfunktion variiert für verschiedene Lösungen der Wellengleichung. Im einfachsten Fall einer ebenen Welle erhalten wir das Eikonal zu $S\left(x\right)= n\cdot x$, womit die Orte konstanter Phase ebene Wellen sind.
+		
+		Das Fermatsche Prinzip lässt sich mitb der Eikonaltheorie gut beschreiben. Nach dem Fermatschen Prinzip wählt das Licht in der geometrischen Optik ja immer den mit der küzesten Laufzeit, den optisch kürzesten Weg. Es gilt für die optische Weglänge zwischen zwei Orten $x_i$ und $x_f$:
+		\[ 
+		OPD\left(x_i,x_f\right) = \int_r n \,\mathrm{d}s = S\left(x_f\right) - S\left(x_i\right)
+		\]
+		Damit lässt sich nun das Fermatsche Prinzip kompakt aufschreiben durch
+		\[
+		\int_r n \,\mathrm{d}s \le \int_\gamma n \,\mathrm{d}s 
+		\]
+		Es gibt also keinen optischen kürzeren Weg als $r$. 
+		Die Gültigkeit dieser Ungleichung lässt sich unter der Kenntnis von elementarer Vektoranalysis zeigen durch:
+		\[
+		S\left(x_f\right) - S\left(x_i\right) = 
+		\int_\gamma \vec{\nabla} S \, \mathrm{d}\vec{s} =
+		\int_\gamma |\vec{\nabla} S|\,cos\left(\theta \right)\,|\mathrm{d}\vec{s}| \le \int_\gamma |\vec{\nabla} S|\,\mathrm{d}s = \int_\gamma n \, \mathrm{d}s
+		\]
+		Der optisch kürzeste Weg zeigt also in Richtung des Gradienten der Eikonalfunktion.
 \subsection{Aberration}
 Durch die Paraxiale Näherung kommt es zu Differenzen der geometrischen Optik und der physikalischen Optik. Diese Abweichungen nennt man Aberrationen.\\
 Die \textbf{sphärische Aberration} kommt dadurch zustande, dass achsferne Strahlen zu einem anderen Brennpunkt hin gebrochen werden als achsnahe. Dies führt zu einem unscharfen Bild.\\
@@ -105,8 +135,51 @@ $W_{222}$ & Astigmatismus & Änderung der Bildfeldwölbung mit Pupillenorientier
 \end{tabular} 
 \caption{Aberrationen eines rotationssymmetrischen optischen Systems in niedrigsten Ordnungen von $\eta$ und $\rho$. \cite{anl}} \label{tab:W}
 \end{table}
-\section{Paraxiale Optik lui}
-ABCD
+\section{Paraxiale Optik}
+		In der paraxialen Optik betrachtet man um die optische Achse rotationssymmetrische Systeme. Dies ist für Linsen und Spiegel durchaus plausibel. Lichtstrahlen sind dann eindeutig durch den Abstand von der optischen Achse $r$ und den Winkel $\theta$ zu dieser charakterisiert. Unter Kleinwinkelnäherung für $\theta$ können dann lineare Abbildung in zum Beispiel Linsen durch 2x2 Matrizen, die sogenannten ABCD-Matrizen, die auf den Vektor $\begin{pmatrix}
+		r \\ \theta
+		\end{pmatrix}$ wirken, dargestellt werden.
+		Es ist dann für einen Lichtstrahl
+		\[
+		\vec{r} \left(z_f\right) = \begin{pmatrix}
+		r\left(z_f\right) \\ \theta\left(z_f\right)
+		\end{pmatrix} = 
+		\begin{pmatrix}
+		A & B \\
+		C & D   \end{pmatrix} \cdot \begin{pmatrix}
+		r\left(z_i\right) \\ \theta\left(z_i\right)
+		\end{pmatrix} = M \cdot \vec{r} \left(z_i\right)		
+		\]
+		Dabei ist $z_i$ der Lichtstrahl vor der Abbildung und $z_f$ der danach.
+		Für einige optische Abbildungen seien hier die ABCD Matrizen gegeben:
+		
+		Freie Propagation im Raum über eine Strecke L:
+		\[
+		P_{frei} =
+		\begin{pmatrix}
+		1 & L \\
+		0 & 1   \end{pmatrix}
+		\]
+		
+		Abbildung an einer dünnen Linse der Brennweite $f$:
+		\[
+		L_{dünn} =
+		\begin{pmatrix}
+		1 & 0 \\
+		\frac{-1}{f} & 1   \end{pmatrix}
+		\]
+		
+		Reflexion an einem sphärischen Spiegel mit Radius R, wobei die Vorzeichenkonvention einzuhalten ist:
+		\[
+		S_{sph} =
+		\begin{pmatrix}
+		1 & 0 \\
+		\frac{-2}{R} & 1   \end{pmatrix}
+		\]
+		Für ein zusammengestztes System gilt, wenn ein Lichtstrahl hintereinander die Abbildungen $M_1, M_2$ und dann $M_3$ durchläuft, lässt sich die gesamte Abbildung beschreiben durch:
+		\[M_{gesamt} = M_3 \cdot M_2 \cdot M_1\]
+		
+		Bei der paraxialen Optik hat man eine beachtliche Zahl an Vorraussetzungen und Näherungen angewandt. Aberrationen werden vollständig ignoriert. Wegen der Kleinwinkelnäherung dürfen die Winkel nicht zu groß sein. Zusätzlich besitzt die paraxiale Optik keine Gültigkeit für achsferne Strahlen. Sind diese Vorraussetzungen aber gegeben, ist sie ein sehr praktisches Hilfsmittel.
 \section{Kenngrößen von optischen Systemen}
 Zur Beschreibung Optischer Systeme wollen wir nun auf einige wichtige Größen eingehen. \\
 Für die Charakterisierung von Oberflächen parametrisiert man diese in geeigneter Weise. Die konische Konstante $ \kappa $ bestimmt maßgeblich die Form (siehe Tabelle \ref{tab:kappa}).
