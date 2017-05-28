@@ -36,7 +36,7 @@
 \tableofcontents
 
 \chapter{Ziel des Versuchs}
-•
+In diesem Versuch sollen am Computer optische System entworfen, designt, simuliert und optimiert werden. Dafür wird das Programm Zemax verwendet, welches in der Industrie weit verbreitet ist. Es soll zunächst der Strahlgang durch verschiedene Linsensysteme simuliert werden und dabei insbesondere die Abbildungsfehler untersucht werden. Anschließend sollen die Systeme nach möglichst kleinen Abbildungsfehlern optimiert werden. Anschließend findet eine ähnlich Untersuchung des Hubble Weltraumteleskopes mit Zemax statt.
 \chapter{Physikalische Grundlagen}
 \section{Maxwell-Gleichungen und Wellengleichung}
 Licht lässt sich als Welle durch die Maxwell-Gleichungen beschreiben. Wir betrachten Medien mit verschwindender Ladungs- und Stromdichte. Hierfür lauten die Maxwell-Gleichungen
@@ -55,9 +55,39 @@ und ebenso für $ \vec{H} $. Es gilt $ c=1/\sqrt{\epsilon_0\epsilon\mu_0\mu} $. 
 \vec{A}=\vec{A}_0e^{i(\vec{k\vec{x}}-\omega t)}
 \end{align}
 Dabei gilt, dass die Maße des Systems groß sind gegenüber der Wellenlänge $ \lambda $, und, dass $ \omega=kc $ gilt.
-\section{Physikalische Optik lui}
+\subsection{Physikalische Optik}
+		\subsubsection{Beugung}
+			Licht wird in der Realität nur als Bündel ausgsandt. Trifft ein Lichtbündelauf eine scharf begrenzte Fläche, zum Beispiel eine Blende oder auch ein Gitter, so beobachtet man auch Intensität in Bereichen, die nach Überlegungen der geometrischen Optik ausgeschlossen sind. Dieses Phänomen heißt Beugung. Sie lässt sich mit dem Huygensschen Prinzip gut erklären. Jeder Punkt einer Wellenfront ist, nach diesem, Ausgangspunkt einer neuen Elementarwelle. An scharf begrenzten Kanten sorgt dies dafür, dass die Wellenfront an der Kante nicht mehr nur eben in die Ausgangsrichtung verläuft. Manche dieser Elementarwellen gelangen in den Schatten hinter der Kante, sodass dort Intensität nachgewiesen werden kann.
+			\subsubsection{Interferenz}
+			Im allgemeinen beeinflussen sich elektromagnetische wie alle anderen Wellen auch sich nicht gegenseitig in Ausbreitungsrichtung und -geschwindigkeit. Nach dem Superpositionsprinzip addieren sich lediglich die Amplituden. Ein typisches Beispiel für Interferenz ist der Doppelspaltversuch. Auf dem Schirm hinter einem mit monochromatischem und kohärenten beleuchteten Doppelspalt finden sich dunkle und hellen Streifen, je nach Phasenunterschied zwischen beiden möglichen Wegen. Ist die Wegdiffernez ein Vielfaches der Wellenlänge so herrscht am Schirm konstruktive Interferenz und wir messen eine höhere Intensität als von einem der Spalte ausgeht. Dazwischen in den dunklen Sreifen löschen sich gerade die Amplituden der beiden von den Spalten ausgehenden Wellen aus.
 \section{Geometrische Optik}
-\subsection{Eikonal Theorien lui}
+\subsection{Eikonal Theorie}
+		Das Eikonal $S \left( \vec{x} \right)$ aus der Amplitudenfunktion für Wellen 
+		\[
+		\Phi \left( \vec{x} , t \right) = \Phi_0 \cdot e^{ik\left(S \left( \vec{x} \right)-ct\right)}
+		\]
+		stellt eine räumlich Funktion für die Phase dar. So ist $S\left( \vec{x} \right)$ innerhalb einer Wellenfront konstant. Wir finden mit den Maxwellgleichungen und dem Kurzwellenlimes die Eikonalgleichung:
+		\[
+		\lbrack \vec{\nabla} S\left( \vec{x} \right) \rbrack ^2 = n\left(\vec{x} \right)^2
+		\]
+		Die Eikonalfunktion variiert für verschiedene Lösungen der Wellengleichung. Im einfachsten Fall einer ebenen Welle erhalten wir das Eikonal zu $S\left(x\right)= n\cdot x$, womit die Orte konstanter Phase ebene Wellen sind.
+		
+		Das Fermatsche Prinzip lässt sich mitb der Eikonaltheorie gut beschreiben. Nach dem Fermatschen Prinzip wählt das Licht in der geometrischen Optik ja immer den mit der küzesten Laufzeit, den optisch kürzesten Weg. Es gilt für die optische Weglänge zwischen zwei Orten $x_i$ und $x_f$:
+		\[ 
+		OPD\left(x_i,x_f\right) = \int_r n \,\mathrm{d}s = S\left(x_f\right) - S\left(x_i\right)
+		\]
+		Damit lässt sich nun das Fermatsche Prinzip kompakt aufschreiben durch
+		\[
+		\int_r n \,\mathrm{d}s \le \int_\gamma n \,\mathrm{d}s 
+		\]
+		Es gibt also keinen optischen kürzeren Weg als $r$. 
+		Die Gültigkeit dieser Ungleichung lässt sich unter der Kenntnis von elementarer Vektoranalysis zeigen durch:
+		\[
+		S\left(x_f\right) - S\left(x_i\right) = 
+		\int_\gamma \vec{\nabla} S \, \mathrm{d}\vec{s} =
+		\int_\gamma |\vec{\nabla} S|\,cos\left(\theta \right)\,|\mathrm{d}\vec{s}| \le \int_\gamma |\vec{\nabla} S|\,\mathrm{d}s = \int_\gamma n \, \mathrm{d}s
+		\]
+		Der optisch kürzeste Weg zeigt also in Richtung des Gradienten der Eikonalfunktion.
 \subsection{Aberration}
 Durch die Paraxiale Näherung kommt es zu Differenzen der geometrischen Optik und der physikalischen Optik. Diese Abweichungen nennt man Aberrationen.\\
 Die \textbf{sphärische Aberration} kommt dadurch zustande, dass achsferne Strahlen zu einem anderen Brennpunkt hin gebrochen werden als achsnahe. Dies führt zu einem unscharfen Bild.\\
@@ -105,8 +135,51 @@ $W_{222}$ & Astigmatismus & Änderung der Bildfeldwölbung mit Pupillenorientier
 \end{tabular} 
 \caption{Aberrationen eines rotationssymmetrischen optischen Systems in niedrigsten Ordnungen von $\eta$ und $\rho$. \cite{anl}} \label{tab:W}
 \end{table}
-\section{Paraxiale Optik lui}
-ABCD
+\section{Paraxiale Optik}
+		In der paraxialen Optik betrachtet man um die optische Achse rotationssymmetrische Systeme. Dies ist für Linsen und Spiegel durchaus plausibel. Lichtstrahlen sind dann eindeutig durch den Abstand von der optischen Achse $r$ und den Winkel $\theta$ zu dieser charakterisiert. Unter Kleinwinkelnäherung für $\theta$ können dann lineare Abbildung in zum Beispiel Linsen durch 2x2 Matrizen, die sogenannten ABCD-Matrizen, die auf den Vektor $\begin{pmatrix}
+		r \\ \theta
+		\end{pmatrix}$ wirken, dargestellt werden.
+		Es ist dann für einen Lichtstrahl
+		\[
+		\vec{r} \left(z_f\right) = \begin{pmatrix}
+		r\left(z_f\right) \\ \theta\left(z_f\right)
+		\end{pmatrix} = 
+		\begin{pmatrix}
+		A & B \\
+		C & D   \end{pmatrix} \cdot \begin{pmatrix}
+		r\left(z_i\right) \\ \theta\left(z_i\right)
+		\end{pmatrix} = M \cdot \vec{r} \left(z_i\right)		
+		\]
+		Dabei ist $z_i$ der Lichtstrahl vor der Abbildung und $z_f$ der danach.
+		Für einige optische Abbildungen seien hier die ABCD Matrizen gegeben:
+		
+		Freie Propagation im Raum über eine Strecke L:
+		\[
+		P_{frei} =
+		\begin{pmatrix}
+		1 & L \\
+		0 & 1   \end{pmatrix}
+		\]
+		
+		Abbildung an einer dünnen Linse der Brennweite $f$:
+		\[
+		L_{dünn} =
+		\begin{pmatrix}
+		1 & 0 \\
+		\frac{-1}{f} & 1   \end{pmatrix}
+		\]
+		
+		Reflexion an einem sphärischen Spiegel mit Radius R, wobei die Vorzeichenkonvention einzuhalten ist:
+		\[
+		S_{sph} =
+		\begin{pmatrix}
+		1 & 0 \\
+		\frac{-2}{R} & 1   \end{pmatrix}
+		\]
+		Für ein zusammengestztes System gilt, wenn ein Lichtstrahl hintereinander die Abbildungen $M_1, M_2$ und dann $M_3$ durchläuft, lässt sich die gesamte Abbildung beschreiben durch:
+		\[M_{gesamt} = M_3 \cdot M_2 \cdot M_1\]
+		
+		Bei der paraxialen Optik hat man eine beachtliche Zahl an Vorraussetzungen und Näherungen angewandt. Aberrationen werden vollständig ignoriert. Wegen der Kleinwinkelnäherung dürfen die Winkel nicht zu groß sein. Zusätzlich besitzt die paraxiale Optik keine Gültigkeit für achsferne Strahlen. Sind diese Vorraussetzungen aber gegeben, ist sie ein sehr praktisches Hilfsmittel.
 \section{Kenngrößen von optischen Systemen}
 Zur Beschreibung Optischer Systeme wollen wir nun auf einige wichtige Größen eingehen. \\
 Für die Charakterisierung von Oberflächen parametrisiert man diese in geeigneter Weise. Die konische Konstante $ \kappa $ bestimmt maßgeblich die Form (siehe Tabelle \ref{tab:kappa}).
@@ -200,11 +273,145 @@ R_2&=-1,346\text{ m}\\
 L&=4,876\text{ m}
 \end{align}
 \chapter{Versuchsdurchführung und Auswertung}
-\section{Sammellinse}
-\subsection{Paraxiale Linse}
-\subsection{Reale Linse}
-\subsection{Optimierung der Linse}
-\subsection{Linsen-Doublett}
+	\section{Sammellinse}
+		\subsection{Paraxiale Linse}
+		
+		Zunächst simulierten wir mit Zemax die Abbildung einer paraxialen Sammellinse. Wie gefordert wurde die Wellenlänge auf $\lambda_d = 587,65 nm$, die Brennweite auf $f = 10 /, /si{cm}$ und die Eintrittspupille auf $d_E = 20 mm$ gesetzt. Die Strahlen wurden für Eintrittswinkel von $0°$ und $10°$ simuliert. An den Strahlengängen, ist keine Aberration zu erkennen. Dies entspricht der Erwartung, da die Linse der paraxialen Näherung entsprechend simuliert wurde. In ABB ist das ganze dann quantifiziert. Wir erkennen einen RMS-Spotradius von $0 \, \mu m$. Also ist dieses System beugungsbegrenzt durch das eingezeichnete Airyscheibchen. Dem ganzen entsprechend sind die in ABB zu sehenden Seidelkoeffizienten, die den Einfluss der verschiedenen Aberration beschreiben alle Null. 
+		
+	\begin{figure}[H]
+\centering
+  \subfloat[Querschnitt für die Winkel 0,00\degree , 0,06\degree\;und 0,08\degree ]{
+   	\includegraphics[width=0.5\textwidth]{BilderH/ideal_cross_L.jpg}}\quad
+  \subfloat[Spotdiagramm der paraxialen Linse]{
+   	\includegraphics[width=0.4\textwidth]{BilderH/ideal_spot_L.jpg}}\quad   
+  \caption{Paraxiale Version der Linse}
+\end{figure}		
+		
+\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+ \centering  	\includegraphics[width=.5\textwidth]{BilderH/ideal_seidel_L.jpg}
+   	\caption{Seidelkoeffizienten der paraxialen Linse}
+  	\end{minipage}
+\end{figure}		
+		
+		In der Realität finden nützt uns die Simulation einer perfekt paraxial genäherten Linse aber nichts. Deshalb simmulierten wir anschließend ein reales System:
+		
+		\subsection{Reale Linse}
+		
+		Es sollen nun eine reale, also ausgedehnte Linsen betrachtet werden. Deshalb muss in Zemax eine weitere Oberfläche eingefügt werden. 
+		
+		Zunächst soll eine plankonvexe Linse mit $R_1 = 5,168 m$ und $R_2 = \infty$ simuliert werden. ls Glastyp wurde N-BK7 ausgewählt. Wieder wurde für die Eintreffwinkel $0°$ und $10°$ simuliert. Der Strahlgang ist in ABB dargestellt.
+		
+		
+		\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+\centering   	\includegraphics[width=.5\textwidth]{BilderH/standard_cross_L.jpg}
+   	\caption{Querschnitt der Plankonvexlinse}
+  	\end{minipage}
+\end{figure}
+				
+		
+		Wir erkennen eine Defokussierung, die beim schräg eintreffenden Strahl stärker ist als beim achsparallelen.
+	Nun liefert das Spotdiagramm interessante Informationen zum Fehler der Abbildung. Im Spotdiagramm sehen wir deutlich, dass die RMS Radien mit $r_{RMS \, 0°} = 143,66 \mu m $ und $r_{RMS \, 10°} = 484,13 $ den Airyradius $r_{Airy} = 3,54 \mu m$ deutlich übersteigen. Das System ist also nicht durch Beugung sondern durch die Abbildungsfehler begrenzt.
+	
+		\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+\centering   	\includegraphics[width=.5\textwidth]{BilderH/standard_spot_L.jpg}
+   	\caption{Spotdiagramm der Plankonvexlinse}
+  	\end{minipage}
+\end{figure}
+		
+	An den Seidelkoeffizienten erkennen wir, dass alle Abbildungsfehler auftreten, die Verzeichnung am stärksten. Sphärische Aberration ist auch zu beobachten. Entgegen des aufgrund der elliptischen Form des Spotdiagramms für den Strahl unter $10°$ vermutet großen Anteils des Astigmatismusses dominiert diese Aberration nicht. Offensichtlich ist wohl ein Fehler bei der computergestützten Bestimmung der Seidelkoeffizienten passiert.
+	
+\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+\centering   	\includegraphics[width=.5\textwidth]{BilderH/standard_seidel_L.jpg}
+   	\caption{Seidelkoeffizienten der Plankonvexlinse}
+  	\end{minipage}
+\end{figure}
+	
+	Nun wurde das zweite System aus der Vorbereitungsaufgabe, die bikonkave Linse mit $|R_{1/2}| = 10,336 cm$ unter den gleichen Voraussetzungen, das heißt mit gleichem Glas und gleichen Einfallswinkeln. Den Strahlgang sieht man in folgender Abbildung 
+	
+	\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+\centering   	\includegraphics[width=.5\textwidth]{BilderH/standard_cross2_L.jpg}
+   	\caption{Querschnitt der Bikonvexlinse}
+  	\end{minipage}
+\end{figure}
+	
+	Auch hier erkennt man am Strahlgang eine Defokussierung. Zur vorig simulierten Linse ist aber am Strahlgang keine Veränderung zu beobachten. Zur Beurteilung werden wieder Spotdiagramm und Seidelkoeffizienten herangezogen.
+	
+	\begin{figure}[H]
+\centering
+  \subfloat[Spotdiagramm der Bikonvexlinse]{
+   	\includegraphics[width=0.5\textwidth]{BilderH/standard_spot2_L.jpg}}\quad
+  \subfloat[Seidelkoeffizienten der Bikonvexlinse]{
+   	\includegraphics[width=0.4\textwidth]{BilderH/standard_seidel2_L.jpg}}\quad   
+  \caption{Bikonvexlinse}
+\end{figure}
+	
+	Das Spotdiagramm liefert uns direkt die Information, dass der Airyradius relativ konstant geblieben ist, während sich die RMS Radien verändert haben. Für 0° ist der RMS Radius mit jetzt $r_{RMS \, 0°} = 119,40 \mu m $ deutlich kleiner, während der für den 10° Strahl mit $r_{RMS \, 10°} = 492,27 $ geringfügig gestiegen ist. Außerdem ist die Verteilung im Spotdiagramm für den schrägen Strahl nun nicht mehr elliptisch sondern eher kometenförmig. Dies spricht für einen höheren Anteil der Koma. Die Betrachtung der Seidelkoeffizienten liefert dafür keine Bestätigung. Der Vergleich mit anderen Versuchsdurchführungen zeigt, dass wir die vordere Seite der Linse als Oberfläche der Strahlquelle gesetzt haben und wohl deshalb keine sinnvollen Ergebnisse für die Seidelkoeffizienten erhalten. Strahlgang und Spotdiagramm sind hiervon unberührt und exakt. 
+	Zu den Abbildungsfehlern können wir hier deshalb nur einen hohen Anteil der Koma vermuten.
+	
+	\subsection{Optimierte Linse}
+	
+	Nun sollte im als nächstes die Optimierungsfunktion von Zemax benutzt werden, um eines der beiden vorigen Systeme zu optimieren. Wir entschieden uns für die bikonvexe Linse. Als für die Optimierung variable Größen setzten, wir die Krümmungsradien der Linsenoberflächen, den Abstand der hinteren Linsenoberfläche zur Bildebene sowie die Dicke der Linse, wobei diese auf maximal $d_{max} = 30 mm$ gesetzt wurde. Konstant gehalten werden sollte die Blendenzahl $F =5$, was vor allem die Krümmungsradien beeinflusst. Die Zemaxoptimierung wurde nun als Minimierungsproblem des RMS Spotradiuses vom Computer durchgeführt. Für den Strahlgang erhielten wir folgendes Ergebnis: 
+	
+	\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+   	\centering
+   	\includegraphics[width=.5\textwidth]{BilderH/opti_cross_L.jpg}
+   	\caption{Querschnitt der optimierten Bikonvexlinse}
+  	\end{minipage}
+\end{figure}
+	
+	Von Interesse ist hier nun wieder das Spotdiagramm. Mit $r_{RMS \, 0°} = 81,97 \mu m $ und $r_{RMS \, 10°} = 193,52 \mu m $ ist vor insbesondere für den schrägen Strahlgang eine deutliche Verbesserung zu beobachten. Interessanterweise sind hier die ausgegebenen Seidelkoeffizienten wieder sinnvoll und passen zu den Ergebnissen der anderen Gruppe, die den Versuch durchgeführt hat. Wir erkennen, das nun der Hauptteil des Abbildungsfehlers die sphärische Aberration ausmacht. 
+	
+	\begin{figure}[H]
+\centering
+  \subfloat[Spotdiagramm der optmierten Bikonvexlinse]{
+   	\includegraphics[width=0.5\textwidth]{BilderH/opti_spot_L.jpg}}\quad
+  \subfloat[Seidelkoeffizienten der optimierten Bikonvexlinse]{
+   	\includegraphics[width=0.4\textwidth]{BilderH/opti_seidel_L.jpg}}\quad   
+  \caption{Optimierte Bikonvexlinse}
+\end{figure}
+	
+	\subsection{Doublett mit Optimierung}
+	
+	Die Optimierungsmöglichkeiten für Zemax, aber auch in realen optischen Aufbauten erhöht sich mit der Anzahl der Freiheitsgrade. Aus diesem Grund sollte nun ein Mehrlinsensystem simuliert und optimiert werden. Wir entschieden uns für ein Doublett. Also fügten wir in Zemax zwei weitere Oberflächen in das zuvor verwendete System ein und optimierten das System. Variable Komponenten waren wieder die Krümmungsradien und die Abstände zwischen Linsen und Bildebene, die Linsendicke sowie dieses mal der Glastyp der ersten Linse, wobei der sich, so viel sei hier vorweggegriffen bei der Optimierung nicht änderte. Weiterhin wurde die konische Konstante der Linsenoberflächen variabel gesetzt, sodass es sich dabei nicht mehr zwingend um Kugelschnitte handeln muss. Nach der Optimierung erhält man folgendes System:
+	
+\begin{figure}[H]
+\centering
+   	\begin{minipage}[b]{\textwidth}
+   	\centering
+   	\includegraphics[width=.5\textwidth]{BilderH/duplett_cross_opti.jpg}
+   	\caption{Querschnitt des Doublett-Systems}
+  	\end{minipage}
+\end{figure}
+	
+	Dieses Mal wurde auch chromatische Abberation mitbetrachtet, indem wir drei verschiedenen Wellenlängen simulierten, nämlich $\lambda_1 = 587,562 nm$, $\lambda_2 = 656,273 nm$ und $\lambda_3 = 587,562 nm$
+	Hier ist wieder die Betrachtung von Spotdiagramm und Seidelkoeffizienten interessant:
+	
+	\begin{figure}[H]
+\centering
+  \subfloat[Spotdiagramm der optmierten Bikonvexlinse]{
+   	\includegraphics[width=0.5\textwidth]{BilderH/duplett_spot_opti.jpg}}\quad
+  \subfloat[Seidelkoeffizienten des optimierten Doublett]{
+   	\includegraphics[width=0.4\textwidth]{BilderH/duplett_seidel_opti.jpg}}\quad   
+  \caption{Optimiertes Doublett}
+\end{figure}
+	
+	Im Spotdiagramm erkennen wir, dass Licht höherer Wellenlänge besser fokussiert wird. Für schräg einfallendes Licht beobachten wir eine Anordnung der Punkte in Form einer verzerrten Ellipse.
+	  Mit $r_{RMS \, 0°} = 78,58 \mu m $ und $r_{RMS \, 10°} = 129,65 \mu m $ für die auch zuvor verwendete Wellenlänge erkennen wir, dass das optimierte Zweilinsensystem nochmal besser abbildet, da zur Optimierung mehr Freiheitsgrade zur Verfügung stehen. 
+	 Dies Seidelkoeffizienten zeigen deutlich, dass der dominierende Fehler die sphärische Aberration ist. 
+	 
+	 Letztlich haben wir ein relativ gut abbildendes Zweilinsensystem mit Zemax simuliert und optimiert, woran der praktische Nutzen des Programms und des Designs optischer Systeme gut verständlich wurde.
 \section{Hubble-Teleskop}
 Nun untersuchen wir das Hubble-Teleskop. Dazu erstellen wir zunächst eine paraxiale Version des Teleskops.
 \subsection{Paraxiales Teleskop}
