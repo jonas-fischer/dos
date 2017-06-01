@@ -39,22 +39,22 @@
 In diesem Versuch sollen am Computer optische System entworfen, designt, simuliert und optimiert werden. Dafür wird das Programm Zemax verwendet, welches in der Industrie weit verbreitet ist. Es soll zunächst der Strahlgang durch verschiedene Linsensysteme simuliert werden und dabei insbesondere die Abbildungsfehler untersucht werden. Anschließend sollen die Systeme nach möglichst kleinen Abbildungsfehlern optimiert werden. Anschließend findet eine ähnlich Untersuchung des Hubble Weltraumteleskopes mit Zemax statt.
 \chapter{Physikalische Grundlagen}
 \section{Maxwell-Gleichungen und Wellengleichung}
-Licht lässt sich als Welle durch die Maxwell-Gleichungen beschreiben. Wir betrachten Medien mit verschwindender Ladungs- und Stromdichte. Hierfür lauten die Maxwell-Gleichungen
+Licht lässt sich als elektromagnetische Welle durch die Maxwell-Gleichungen beschreiben. Wir betrachten Medien mit verschwindender Ladungs- und Stromdichte. Hierfür lauten die Maxwell-Gleichungen
 \begin{align}
 \epsilon_0\nabla[\epsilon(\vec{x})\vec{E}(\vec{x},t)]&=0\\
 \mu_0\nabla[\mu(\vec{x})\vec{H}(\vec{x},t)]&=0\\
 \nabla\times\vec{E}(\vec{x},t)&=-\mu_0\mu(\vec{x})\frac{\partial\vec{H}(\vec{x},t)}{\partial t}\\
-\nabla\times\vec{H}(\vec{x},t)&=\epsilon_0\epsilon(\vec{x})\frac{\partial\vec{E}(\vec{x},t)}{\partial t}
+\nabla\times\vec{H}(\vec{x},t)&=\epsilon_0\epsilon(\vec{x})\frac{\partial\vec{E}(\vec{x},t)}{\partial t}.
 \end{align}
-Daraus ergibt sich die Wellengleichung
+Daraus ergibt sich die Wellengleichung für das elektrische Feld
 \begin{align}
-\nabla^2\vec{E}=\frac{1}{c^2}\frac{\partial^2\vec{E}}{\partial t^2} 
+\nabla^2\vec{E}=\frac{1}{c^2}\frac{\partial^2\vec{E}}{\partial t^2} ,
 \end{align}
-und ebenso für $ \vec{H} $. Es gilt $ c=1/\sqrt{\epsilon_0\epsilon\mu_0\mu} $. Der Ansatz der ebenen Welle löst diese Gleichung.
+und ebenso für das magnetische Feld $ \vec{H} $. Es gilt $ c=1/\sqrt{\epsilon_0\epsilon\mu_0\mu} $. Der Ansatz der ebenen Welle 
 \begin{align}
 \vec{A}=\vec{A}_0e^{i(\vec{k\vec{x}}-\omega t)}
 \end{align}
-Dabei gilt, dass die Maße des Systems groß sind gegenüber der Wellenlänge $ \lambda $, und, dass $ \omega=kc $ gilt.
+löst diese Gleichung. Hier ist $\vec{A_0}=\vec{E_0}$ oder $\vec{A_0}=\vec{H_0}$.
 \subsection{Physikalische Optik}
 		\subsubsection{Beugung}
 			Licht wird in der Realität nur als Bündel ausgsandt. Trifft ein Lichtbündelauf eine scharf begrenzte Fläche, zum Beispiel eine Blende oder auch ein Gitter, so beobachtet man auch Intensität in Bereichen, die nach Überlegungen der geometrischen Optik ausgeschlossen sind. Dieses Phänomen heißt Beugung. Sie lässt sich mit dem Huygensschen Prinzip gut erklären. Jeder Punkt einer Wellenfront ist - nach diesem - Ausgangspunkt einer neuen Elementarwelle. An scharf begrenzten Kanten sorgt dies dafür, dass die Wellenfront an der Kante nicht mehr nur eben in die Ausgangsrichtung verläuft. Manche dieser Elementarwellen gelangen in den Schatten hinter der Kante, sodass dort Intensität nachgewiesen werden kann.
@@ -89,23 +89,23 @@ Dabei gilt, dass die Maße des Systems groß sind gegenüber der Wellenlänge $ 
 		\]
 		Der optisch kürzeste Weg zeigt also in Richtung des Gradienten der Eikonalfunktion.
 \subsection{Aberration}
-Durch die Paraxiale Näherung kommt es zu Differenzen der geometrischen Optik und der physikalischen Optik. Diese Abweichungen nennt man Aberrationen.\\
+Durch die linearen Näherungen der paraxialen Optik kommt es zu Abweichungen von idealen optischen Abbildungen. Diese Abweichungen nennt man Aberrationen.\\
 Die \textbf{sphärische Aberration} kommt dadurch zustande, dass achsferne Strahlen zu einem anderen Brennpunkt hin gebrochen werden als achsnahe. Dies führt zu einem unscharfen Bild.\\
 Beim \textbf{Astigmatismus} liegt der Focus der Meridonalebene, jene Ebene, die das Objekt und die optische Achse enthält, weiter vorne als die der Sagittalebene, die Senkrecht zur Meridonalebene liegt. Dies führt dazu, dass es erst einen waagrechter Strichfokus, dann ein Kreis der kleinsten Verwirrung und schließlich ein senkrechter Strichfokus entsteht.\\
 Die \textbf{Koma} entsteht durch die Überlagerung von sphärischer Aberration und Astigmatismus. Dabei entsteht ein zum Rand der Apparatur gerichteter Schweif.\\
-Die \textbf{Bildfeldwölbung} beschreibt, dass es sich bei der Bildebene nicht um eine Eben handelt sondern um eine gekrümmte Fläche. Dadurch kommt es zu einer Abblidung mit unscharfem Rand.\\
+Die \textbf{Bildfeldwölbung} beschreibt, dass es sich bei der Bildebene nicht um eine Eben handelt sondern um eine gekrümmte Fläche. Dadurch kommt es zu einer Abblidung mit unscharfem Rand, da die Bildebene dort nicht mit dem Schirm übereinstimmt.\\
 Die \textbf{Verzeichung} produziert als einziger Linsenfehler keine Unschärfe, sonder eine Verzerrung des Bildes, da achsnahe und achsferne Strahlen unterschiedlich vergrößert werden.\\
-Diese sind monochromatische Fehler, als chromatische Fehler bezeichnet man, dass unterschiedliche Wellenlängen unterschiedliche Fokusse haben.\\
+Diese sind monochromatische Fehler, als chromatische Fehler bezeichnet man, dass unterschiedliche Wellenlängen unterschiedliche Fokusse haben, da auf Grund der Dispersion verschiedene Wellenlängen unterschiedlich stark gebrochen werden.\\
 Mit Hilfe des Wellenfrontfehlers lassen sich die monochromatischen Aberrationen quantifizieren. Dazu betrachtet man eine ideale, an der Austrittspupille des Systems konvergierende Kugelwelle als Referenzwelle. Die Abweichung zur vom optischen System ausgehenden Wellenfront ist der Wellenfrontfehler. Ein Strahl ist durch seinen Startpunkt in der Objektebene $r_0 = (x_0, y_0)$ und seinen Schnittpunkt mit der Austrittspupille $r_p = (x_p, y_p)$ komplett beschrieben. Im Falle rotationssymmetrischer Systeme lässt sich der Strahl auch beschreiben durch
 \begin{align}
 \eta&=\frac{|r_0|}{h_{max}}\\
 \rho&=\frac{|r_p|}{r_{max}}\\
-\theta&=\angle(r_0,r,p)
+\theta&=\angle(r_0,r_p)
 \end{align}
 wobei $ h_{max} $ die maximale Höhe des Objektes
 und $ r_{max} $ den Radius der Austrittspupille bezeichnen. Die Wellenfrontfehlerfunktion $W$ ist
 \begin{align}
-W(\eta,\rho,\theta)=\sum_{ijk}^{\inf}W_{ijk}\eta^i\rho^j\cos^k\theta
+W(\eta,\rho,\theta)=\sum_{ijk}^{\infty}W_{ijk}\eta^i\rho^j\cos^k\theta
 \end{align}
 Es gilt $i+j$ und $j+k$ sind für jeden Summanden eine positive gerade Zahl, sowie $k\leq j$. Der Zusammenhang von $ W_{ijk} $ und den Seidelkoeffizienten ist wie folgt
 \begin{align}
@@ -181,8 +181,7 @@ $W_{222}$ & Astigmatismus & Änderung der Bildfeldwölbung mit Pupillenorientier
 		
 		Bei der paraxialen Optik hat man eine beachtliche Zahl an Vorraussetzungen und Näherungen angewandt. Aberrationen werden vollständig ignoriert. Wegen der Kleinwinkelnäherung dürfen die Winkel nicht zu groß sein. Zusätzlich besitzt die paraxiale Optik keine Gültigkeit für achsferne Strahlen. Sind diese Vorraussetzungen aber gegeben, ist sie ein sehr praktisches Hilfsmittel.
 \section{Kenngrößen von optischen Systemen}
-Zur Beschreibung Optischer Systeme wollen wir nun auf einige wichtige Größen eingehen. \\
-Für die Charakterisierung von Oberflächen parametrisiert man diese in geeigneter Weise. Die konische Konstante $ \kappa $ bestimmt maßgeblich die Form (siehe Tabelle \ref{tab:kappa}).
+Zur Beschreibung Optischer Systeme wollen wir nun auf einige wichtige Größen eingehen. Für die Charakterisierung von Oberflächen parametrisiert man diese in geeigneter Weise. Die konische Konstante $ \kappa $ bestimmt maßgeblich die Form (siehe Tabelle \ref{tab:kappa}).
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
@@ -200,22 +199,23 @@ $ \kappa >0 $ & Ellipsoid (oblate Deformierung) \\
 \end{table}
 Die \textbf{effektive Brennweite (EFL)} ist die resultierende Brennweite eines Systems. \\
 Der \textbf{Durchmesser der Eintrittsblende (EPD)} ist der von der Objektseite gesehene Durchmesser der Aperturblende. \\
-Die \textbf{Blendenzahl} ist $ \frac{\text{EFL}}{\text{EPD}} $ und beschreibt die Intensität des Bildes. Verwendet wird sie vor allem bei weit vom System entfernten Objekten. \\
+Die \textbf{Blendenzahl} ist $ \frac{\text{EFL}}{\text{EPD}} $ und beschreibt die Intensität des Bildes. Je größer die Blendenzahl, desto geringer die Intensität an der Bildebene. Verwendet wird sie vor allem bei weit vom System entfernten Objekten. \\
 Für nahe Objekte nimmt man die \textbf{numerische Apertur} die sich aus dem Brechungsindex und dem halben Öffnungswinkel berechnet. NA$ =n\cdot\sin\alpha $.\\
 \chapter{Vorbereitende Aufgaben}
-Im folgenden werden die zwei vorbereitenden Aufgaben behandelt
 \section{Plankonvex- und Bikonvexlinse}
 Um die Krümmungsradien der dünnen Linsen zu berechnen benutzen wir die Linsenmachergleichung
 \begin{align}
 \frac{1}{f}=(n-1)\left(\frac{1}{R_1}-\frac{1}{R_2}\right)
 \end{align}
-Gegeben waren n=1,5168, $ f=10 $ cm sowie $ R_2=\inf $ bzw. $ R_2=-R_1 $. Damit ergibt sich für die Plankonvexe Linse
+Gegeben waren n=1,5168, $ f=10 $ cm sowie $ R_2=\infty $ bzw. $ R_2=-R_1 $. Damit ergibt sich für die Plankonvexe Linse
 \begin{align}
-R_1&=5,168\text{ cm}\\
-\text{bzw. }R_1&=10,336\text{ cm}
+R_1&=5,168\text{ cm},
 \end{align}
-für die bikonvexe Linse.
-\section{Hubble-Teleskop}
+und für die bikonvexe Linse
+\begin{align}
+R_1&=10,336\text{ cm}.
+\end{align}
+\section{Hubble-Teleskop}\label{sec:H2}
 Zur Berechnung des Hubble-Teleskops bedienen wir uns der Matrizenoptik. Das Teleskop besteht aus zwei Propagationen und zwei Spiegeln
 \begin{align}
 T_1=\begin{pmatrix}
@@ -233,9 +233,9 @@ T_2=\begin{pmatrix}
 S_2=\begin{pmatrix}
 1&0\\
 -\frac{2}{R_2}&1
-\end{pmatrix}
+\end{pmatrix}.
 \end{align} 
-Die in \cite{anl} angegebenen Bedingungen ergeben dann
+\glqq Die erste Bedingung ergibt sich aus der Tatsache, dass Strahlen, die unter einem Winkel von 0\degree\, einfallen, unabhängig von Ihrem anfänglichen Abstand zur optischen Achse in der Bildebene auf den Punkt auf der optischen Achse fokussiert werden sollen.\grqq\, \cite{anl}
 \begin{align}
 T_2S_2T_1S_1\begin{pmatrix}
 r_1\\
@@ -244,7 +244,11 @@ r_1\\
 &=\begin{pmatrix}
 0\\
 \theta_1
-\end{pmatrix}\\
+\end{pmatrix}
+\end{align}
+\glqq Die zweite Bedingung ist, dass ein Strahl der den Rand von Spiegel 1 [$ =D_1/2 $] unter dem maximalen Einfallswinkel [$ =\theta_{\text{max}} $] trifft, noch auf den Rand von Spiegel 2 [$ =D_2/2 $] abgebildet wird.\grqq\; \cite{anl}
+
+\begin{align}
 T_1S_1\begin{pmatrix}
 D_1/2\\
 \theta_{\text{max}}
@@ -252,7 +256,11 @@ D_1/2\\
 &=\begin{pmatrix}
 D_2/2\\
 \theta_2
-\end{pmatrix}\\
+\end{pmatrix}
+\end{align}
+
+\glqq Die dritte Forderung betrifft das Winkelauflösungsvermögen. Der Durchmesser von Spiegel 1 begrenzt, dem Rayleigh-Kriterium zu Folge, das Winkelauflösungsvermögen des Teleskops [...][$ =\theta_{\text{min}} $.] Ein achsparallel einfallender Strahl [$\Rightarrow$ wird nach Bedingung 1 auf die optische Achse abgebildet] und ein Strahl, der mit dem kleinsten auflösbaren Winkelunterschied [$ =\theta_{\text{min}} $] dazu einfällt, sollen vom CCD-Sensor gerade noch unterschieden werden können, dass heißt auf zwei unterschiedliche Pixel [$ =r_{\text{min}} $] abgebildet werden.\grqq\, \cite{anl}
+\begin{align}
 T_2S_2T_1S_1\begin{pmatrix}
 r_2\\
 \theta_{\text{min}}
@@ -264,13 +272,13 @@ r_{\text{min}}\\
 \end{align}
 wobei sich $ \theta_{\text{min}} $ durch das Rayleigh-Kriterium ergibt
 \begin{align}
-\theta_{\text{min}}=1,22\frac{\lambda}{D_1}=2,428\cdot 10^{-7}\text{ rad}
+\theta_{\text{min}}=1,22\frac{\lambda}{D_1}=2,428\cdot 10^{-7}\text{ rad}.
 \end{align}
 Durch lösen der Gleichungen erhält man
 \begin{align}
 R_1&=10,969\text{ m}\\
 R_2&=-1,346\text{ m}\\
-L&=4,876\text{ m}
+L&=4,876\text{ m}.
 \end{align}
 \chapter{Versuchsdurchführung und Auswertung}
 	\section{Sammellinse}
@@ -413,7 +421,6 @@ L&=4,876\text{ m}
 	 
 	 Letztlich haben wir ein relativ gut abbildendes Zweilinsensystem mit Zemax simuliert und optimiert, woran der praktische Nutzen des Programms und des Designs optischer Systeme gut verständlich wurde.
 \section{Hubble-Teleskop}
-Nun untersuchen wir das Hubble-Teleskop. Dazu erstellen wir zunächst eine paraxiale Version des Teleskops.
 \subsection{Paraxiales Teleskop}
 In Abbildung \ref{fig:hubideal} sind Spotdiagramm (\ref{fig:hubspotideal}) und Querschnitt (\ref{fig:hubcrossideal}) der paraxialen Version des Teleskops dargestellt. Die Seidelkoeffizienten sind hier natürlich alle gleich null, da es sich um die genäherte Version handelt.
 \begin{figure}[H]
@@ -426,7 +433,7 @@ In Abbildung \ref{fig:hubideal} sind Spotdiagramm (\ref{fig:hubspotideal}) und Q
   \label{fig:hubideal}
 \end{figure}
 \subsection{Reales Teleskop}
-Um zum realen System überzugehen ändern wir die idealen Spiegel zu gekrümmten Flächen mit den berechneten Radien. In Abbildung \ref{fig:hubstd} sind die Seidelkoeffizienten (\ref{fig:hubseidelstd}) und die Spotdiagramme (\ref{fig:hubspotstd}) dargestellt. Hier erkennt man, dass der einzige Abbildungsfehler die sphärische Aberration ist. Warum das Spotdiagramm so weit streut lässt sich in Abbildung \ref{fig:hubcrossstd} erkennen. Der Fokus liegt deutlich vor dem Schirm.
+Um zum realen System überzugehen ändern wir die idealen Spiegel zu gekrümmten Flächen mit den berechneten Radien (\ref{sec:H2}). In Abbildung \ref{fig:hubstd} sind die Seidelkoeffizienten (\ref{fig:hubseidelstd}) und die Spotdiagramme (\ref{fig:hubspotstd}) dargestellt. Hier erkennt man, dass der einzige Abbildungsfehler die sphärische Aberration ist. Warum das Spotdiagramm so weit streut, lässt sich in Abbildung \ref{fig:hubcrossstd} erkennen. Der Fokus liegt deutlich vor dem Schirm.
 \begin{figure}[H]
 \centering
   \subfloat[Seidelkoeffizienten für das Teleskop mit den berechneten Radien und Längen]{\label{fig:hubseidelstd}
